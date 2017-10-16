@@ -1,61 +1,59 @@
 package Model;
 
 public class FridgeModel extends AbstractModel {
+	private static FridgeModel instance;
 
-	public void getInternalTemperature() {
-		// TODO - implement FridgeModel.getInternalTemperature
-		throw new UnsupportedOperationException();
+    public static FridgeModel getInstance(){
+        if(null==instance){
+            instance = new FridgeModel();
+        }
+        return instance;
+    }
+
+    @Override
+    public int getConsigneTemperature() { return this.consigneTemperature; }
+    @Override
+    public void setConsigneTemperature(int consigneTemperature) {
+        this.consigneTemperature = consigneTemperature;
+        setChanged();
+        notifyObservers();
+    }
+
+	@Override
+	public int getInternalTemperature() { return this.internalTemperature; }
+    @Override
+	public void setInternalTemperature(int internalTemperature) {
+        this.internalTemperature = internalTemperature;
+        setChanged();
+        notifyObservers();
 	}
 
-	/**
-	 * 
-	 * @param InternalTemperature
-	 */
-	public void setInternalTemperature(int InternalTemperature) {
-		// TODO - implement FridgeModel.setInternalTemperature
-		throw new UnsupportedOperationException();
+    @Override
+	public int getExternalTemperature() { return this.externalTemperature; }
+    @Override
+	public void setExternalTemperature(int externalTemperature) {
+        this.externalTemperature = externalTemperature;
+        setChanged();
+        notifyObservers();
 	}
 
-	public void getExternalTemperature() {
-		// TODO - implement FridgeModel.getExternalTemperature
-		throw new UnsupportedOperationException();
+    @Override
+	public int getHygrometry() { return this.hygrometry;}
+    @Override
+	public void setHygrometry(int hygrometry) {
+        this.hygrometry = hygrometry;
+        setChanged();
+        notifyObservers();
 	}
 
-	/**
-	 * 
-	 * @param ExternalTemperature
-	 */
-	public void setExternalTemperature(int ExternalTemperature) {
-		// TODO - implement FridgeModel.setExternalTemperature
-		throw new UnsupportedOperationException();
+    @Override
+    public boolean getStateDoor() { return stateDoor;}
+    @Override
+	public void setStateDoor(boolean stateDoor) {
+	    this.stateDoor = stateDoor;
+	    setChanged();
+	    notifyObservers();
 	}
 
-	public void getHygrometry() {
-		// TODO - implement FridgeModel.getHygrometry
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param Hygrometry
-	 */
-	public void setHygrometry(int Hygrometry) {
-		// TODO - implement FridgeModel.setHygrometry
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param stateDoor
-	 */
-	public void setStateDoor(int stateDoor) {
-		// TODO - implement FridgeModel.setStateDoor
-		throw new UnsupportedOperationException();
-	}
-
-	public void getStateDoor() {
-		// TODO - implement FridgeModel.getStateDoor
-		throw new UnsupportedOperationException();
-	}
 
 }

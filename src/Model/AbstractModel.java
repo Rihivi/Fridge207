@@ -1,63 +1,27 @@
 package Model;
+import java.util.Observable;
 
-public class AbstractModel {
+public abstract class AbstractModel extends Observable {
 
-	protected int internalTemperature;
-	protected int externalTemperature;
-	protected int hygrometry;
+	protected int consigneTemperature; //valeurConsigne
+	protected int internalTemperature; //valeurTemperatureInterieur
+	protected int externalTemperature; //valeurTemperatureExterieur
+	protected int hygrometry; // valeurHygrometrie
 	protected boolean stateDoor;
 
-	public void getInternalTemperature() {
-		// TODO - implement AbstractModel.getInternalTemperature
-		throw new UnsupportedOperationException();
-	}
+	public abstract int getConsigneTemperature();
+	public abstract void setConsigneTemperature(int consigneTemperature);
 
-	/**
-	 * 
-	 * @param InternalTemperature
-	 */
-	public void setInternalTemperature(int InternalTemperature) {
-		this.internalTemperature = InternalTemperature;
-	}
+	public abstract int getInternalTemperature();
+	public abstract void setInternalTemperature(int internalTemperature);
 
-	public void getExternalTemperature() {
-		// TODO - implement AbstractModel.getExternalTemperature
-		throw new UnsupportedOperationException();
-	}
+	public abstract int getExternalTemperature();
+	public abstract void setExternalTemperature(int externalTemperature);
 
-	/**
-	 * 
-	 * @param ExternalTemperature
-	 */
-	public void setExternalTemperature(int ExternalTemperature) {
-		this.externalTemperature = ExternalTemperature;
-	}
+	public abstract int getHygrometry();
+	public abstract void setHygrometry(int hygrometry);
 
-	public void getHygrometry() {
-		// TODO - implement AbstractModel.getHygrometry
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param Hygrometry
-	 */
-	public void setHygrometry(int Hygrometry) {
-		this.hygrometry = Hygrometry;
-	}
-
-	public void getStateDoor() {
-		// TODO - implement AbstractModel.getStateDoor
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param stateDoor
-	 */
-	public void setStateDoor(int stateDoor) {
-		// TODO - implement AbstractModel.setStateDoor
-		throw new UnsupportedOperationException();
-	}
+	public abstract boolean getStateDoor();
+	public abstract void setStateDoor(boolean stateDoor);
 
 }

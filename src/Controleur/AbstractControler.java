@@ -1,16 +1,17 @@
 package Controleur;
 import Model.AbstractModel;
 
-public class AbstractControler {
+import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+
+public abstract class AbstractControler{
 	protected AbstractModel model;
 
-	public void toggleDoor() {
-		// TODO - implement AbstractControler.toggleDoor
-		throw new UnsupportedOperationException();
-	}
+	public AbstractControler() {}
 
-	public void updateTemperature() {
-		// TODO - implement AbstractControler.updateTemperature
-		throw new UnsupportedOperationException();
-	}
+	public abstract void consigneDoor();
+
+	public abstract void toggleDoor();
+
+	public abstract void updateTemperature();
 }
