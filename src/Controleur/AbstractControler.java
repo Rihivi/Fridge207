@@ -1,10 +1,10 @@
 package Controleur;
 import Model.AbstractModel;
 
-import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
+import java.util.Observable;
 
-public abstract class AbstractControler{
+
+public abstract class AbstractControler extends Observable {
 	protected AbstractModel model;
 
 	public AbstractControler() {}
@@ -13,5 +13,5 @@ public abstract class AbstractControler{
 
 	public abstract void toggleDoor();
 
-	public abstract void updateTemperature();
+	public abstract int updateTemperature(int newTemperature);
 }

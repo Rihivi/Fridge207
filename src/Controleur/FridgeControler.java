@@ -1,6 +1,5 @@
 package Controleur;
 
-import Model.AbstractModel;
 import Model.FridgeModel;
 import Vue.FridgeView;
 
@@ -9,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Observable;
 
 public class FridgeControler extends AbstractControler implements ActionListener, KeyListener {
 
@@ -18,10 +18,12 @@ public class FridgeControler extends AbstractControler implements ActionListener
 	public FridgeControler() {
 
         model = FridgeModel.getInstance();
-        view = new FridgeView(model);
+        view = new FridgeView(this);
+        model.addObserver(view);
+
         view.validate.addActionListener(this);
-        view.ButtonMore.addActionListener(this);
-        view.ButtonLess.addActionListener(this);
+       // view.ButtonMore.addActionListener(this);
+       // view.ButtonLess.addActionListener(this);
         view.componentUpdateTemperature.addKeyListener(this);
         view.setVisible(true);
 	}
@@ -34,8 +36,15 @@ public class FridgeControler extends AbstractControler implements ActionListener
     public void toggleDoor() {
     }
 
+    public int getExtTemperature(){return model.getExternalTemperature();}
+
+    public int getConsigneTemperature(){return  model.getConsigneTemperature();}
+
     @Override
-    public void updateTemperature() {
+    public int updateTemperature(int newTemperature) {
+
+
+        return model.getConsigneTemperature();
     }
 
 
@@ -63,13 +72,13 @@ public class FridgeControler extends AbstractControler implements ActionListener
             }
         }
 
-        if (e.getSource() == view.ButtonMore){
+       /* if (e.getSource() == view.ButtonMore){
             model.setConsigneTemperature(model.getConsigneTemperature()+1);
         }
 
         if (e.getSource() == view.ButtonLess){
             model.setConsigneTemperature(model.getConsigneTemperature()-1);
-        }
+        }*/
 
     }
 
@@ -93,6 +102,7 @@ public class FridgeControler extends AbstractControler implements ActionListener
                     System.out.println(nouvelleConsigne);
                     //fv.consigne.setText("Consigne : " + nouvelleConsigne + "°C");
                     model.setConsigneTemperature(nouvelleConsigne);
+                    System.out.println(model.getConsigneTemperature());
                 } else {
                     JOptionPane d = new JOptionPane();
                     d.showMessageDialog(view.container, "Ceci n'est pas un entier",
@@ -108,6 +118,8 @@ public class FridgeControler extends AbstractControler implements ActionListener
     public void keyReleased(KeyEvent e) {
 
     }
+
+
 
 
     public boolean estUnEntier(String chaine) {

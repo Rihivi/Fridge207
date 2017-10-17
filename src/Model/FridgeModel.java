@@ -15,8 +15,9 @@ public class FridgeModel extends AbstractModel {
     @Override
     public void setConsigneTemperature(int consigneTemperature) {
         this.consigneTemperature = consigneTemperature;
-        setChanged();
+       setChanged();
         notifyObservers();
+
     }
 
 	@Override

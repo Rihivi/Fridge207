@@ -3,9 +3,9 @@ import java.util.Observable;
 
 public abstract class AbstractModel extends Observable {
 
-	protected int consigneTemperature; //valeurConsigne
+	protected int consigneTemperature=2; //valeurConsigne
 	protected int internalTemperature; //valeurTemperatureInterieur
-	protected int externalTemperature; //valeurTemperatureExterieur
+	protected int externalTemperature=1; //valeurTemperatureExterieur
 	protected int hygrometry; // valeurHygrometrie
 	protected boolean stateDoor;
 
