@@ -60,9 +60,9 @@ public class FridgeView extends JFrame implements Observer {
 		stats.setBackground(Color.lightGray);
 
 		componentExternalTemperature = new Label("Température extérieure : " + controler.getExtTemperature() + "°C");
-		componentInternalTemperature = new Label("Température intérieure : " /*+ model.getInternalTemperature()*/+ "°C");
+		componentInternalTemperature = new Label("Température intérieure : " + controler.getInternTemperature() + "°C");
 		componentConsigne = new Label("Consigne : " + controler.getConsigneTemperature() + "°C");
-		componentHygrometry = new Label("Hygrométrie :"/* + model.getHygrometry()*/);
+		componentHygrometry = new Label("Hygrométrie :" + controler.getHygro());
 		componentUpdateTemperature = new TextField();
 		proposition = new Label("Vous pouvez changer la valeur de la consigne en l'écrivant : ");
 		//plusOuMoins = new Label("Ou l'augmenter / diminuer de 1 : ");
@@ -98,22 +98,16 @@ public class FridgeView extends JFrame implements Observer {
 		c.add(stats, BorderLayout.WEST);
 		c.add(componentUpdateState, BorderLayout.CENTER);
 
-
 		setDefaultCloseOperation(3);
 	}
 
 
-	public void addComponent(int typeComponent) {
-
-	}
-
 	@Override
 	public void update(Observable o, Object arg) {
-		System.out.println("TESSSSTTTTTT");
 		componentConsigne.setText("Consigne : " + controler.getConsigneTemperature() + "°C");
-		//componentInternalTemperature.setText("Température intérieure : " + model.getInternalTemperature() + "°C");
+		componentInternalTemperature.setText("Température intérieure : " + controler.getInternTemperature() + "°C");
 		componentExternalTemperature.setText("Température extérieure : " + controler.getExtTemperature() + "°C");
-		//componentHygrometry.setText("Hygrométrie :" + model.getHygrometry());
+		componentHygrometry.setText("Hygrométrie :" + controler.getHygro());
 
 	}
 }

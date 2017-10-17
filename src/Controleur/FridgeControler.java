@@ -16,14 +16,11 @@ public class FridgeControler extends AbstractControler implements ActionListener
     private FridgeView view;
 
 	public FridgeControler() {
-
         model = FridgeModel.getInstance();
         view = new FridgeView(this);
         model.addObserver(view);
 
         view.validate.addActionListener(this);
-       // view.ButtonMore.addActionListener(this);
-       // view.ButtonLess.addActionListener(this);
         view.componentUpdateTemperature.addKeyListener(this);
         view.setVisible(true);
 	}
@@ -37,15 +34,10 @@ public class FridgeControler extends AbstractControler implements ActionListener
     }
 
     public int getExtTemperature(){return model.getExternalTemperature();}
-
+    public int getInternTemperature(){return model.getInternalTemperature();}
     public int getConsigneTemperature(){return  model.getConsigneTemperature();}
+    public int getHygro(){return  model.getHygrometry();}
 
-    @Override
-    public int updateTemperature(int newTemperature) {
-
-
-        return model.getConsigneTemperature();
-    }
 
 
     @Override
@@ -59,8 +51,6 @@ public class FridgeControler extends AbstractControler implements ActionListener
             } else {
                 if (estUnEntier(test)) {
                     int nouvelleConsigne = Integer.parseInt(test);
-                    System.out.println(nouvelleConsigne);
-                    //fv.consigne.setText("Consigne : " + nouvelleConsigne + "°C");
                     model.setConsigneTemperature(nouvelleConsigne);
                 } else {
                     JOptionPane d = new JOptionPane();
@@ -90,7 +80,6 @@ public class FridgeControler extends AbstractControler implements ActionListener
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-            System.out.println("test");
             String test = view.componentUpdateTemperature.getText();
             if (test.equals("")) {
                 JOptionPane d = new JOptionPane();
@@ -99,10 +88,7 @@ public class FridgeControler extends AbstractControler implements ActionListener
             } else {
                 if (estUnEntier(test)) {
                     int nouvelleConsigne = Integer.parseInt(test);
-                    System.out.println(nouvelleConsigne);
-                    //fv.consigne.setText("Consigne : " + nouvelleConsigne + "°C");
                     model.setConsigneTemperature(nouvelleConsigne);
-                    System.out.println(model.getConsigneTemperature());
                 } else {
                     JOptionPane d = new JOptionPane();
                     d.showMessageDialog(view.container, "Ceci n'est pas un entier",
